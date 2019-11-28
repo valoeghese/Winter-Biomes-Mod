@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "winterbiomemod",
+  "version": "1.0.0",
+  
+  "name": "Winter Biomes Mod",
+  "description": "1.15 fabric Biomes mod made for Christmas 2019",
+  "authors": [
+    "Valoeghese"
+  ],
+  
+  "license": "LGPLv3",
+  
+  "environment": "*",
+  
+  "entrypoints": {
+    "main": [
+       "tk.valoeghese.winterbiomemod.WinterBiomeMod"
+    ]
+  },
+  
+  "requires": {
+    "fabricloader": ">=0.4.0"
+  }
+}
