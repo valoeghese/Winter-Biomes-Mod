@@ -21,5 +21,9 @@
   
   "requires": {
     "fabricloader": ">=0.4.0"
-  }
+  },
+  
+  "mixins": [
+    "winterbiomemod.mixins.json"
+  ]
 }

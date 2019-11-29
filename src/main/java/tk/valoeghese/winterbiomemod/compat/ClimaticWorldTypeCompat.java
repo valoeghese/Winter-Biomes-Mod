@@ -9,7 +9,7 @@ public final class ClimaticWorldTypeCompat {
 	}
 
 	public static void compat() {
-		ClimateBiomes.addBiome(Climate.COOL_TEMPERATE, WinterBiomeInit.ALPINE, 5);
-		ClimateBiomes.addBiome(Climate.SNOWY, WinterBiomeInit.ALPINE, 8);
+		ClimateBiomes.addBiome(Climate.COOL_TEMPERATE, WinterBiomeInit.ALPINE, 6);
+		ClimateBiomes.addBiome(Climate.SNOWY, WinterBiomeInit.ALPINE, 10);
 	}
 }
