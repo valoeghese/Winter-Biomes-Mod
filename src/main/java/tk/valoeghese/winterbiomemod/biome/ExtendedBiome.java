@@ -3,6 +3,11 @@ package tk.valoeghese.winterbiomemod.biome;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.DecoratorConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import tk.valoeghese.winterbiomemod.biome.BiomeFactory.BiomePopulator;
 
@@ -19,6 +24,10 @@ public abstract class ExtendedBiome extends net.minecraft.world.biome.Biome
 		biomeFactory.setParent(this);
 		factory = biomeFactory;
 		populator = biomeFactory.createPopulator();
+	}
+	
+	public static <T extends FeatureConfig, U extends DecoratorConfig> ConfiguredFeature<?, ?> configure(Feature<T> feature, T featureConfig, Decorator<U> decorator, U decoratorConfig) {
+		return feature.configure(featureConfig).createDecoratedFeature(decorator.configure(decoratorConfig));
 	}
 
 	@Override
@@ -61,13 +70,13 @@ public abstract class ExtendedBiome extends net.minecraft.world.biome.Biome
 	
 	//============================================================================//
 
-	public static class FlexibleSurfaceConfig extends TernarySurfaceConfig implements Cloneable
+	public static class MutableTernarySurfaceConfig extends TernarySurfaceConfig implements Cloneable
 	{
 		private BlockState top;
 		private BlockState under;
 		private BlockState waterfloor;
 
-		public FlexibleSurfaceConfig(BlockState top, BlockState under, BlockState underwater)
+		public MutableTernarySurfaceConfig(BlockState top, BlockState under, BlockState underwater)
 		{
 			super(top, under, underwater);
 
@@ -92,26 +101,26 @@ public abstract class ExtendedBiome extends net.minecraft.world.biome.Biome
 			return this.waterfloor;
 		}
 
-		public FlexibleSurfaceConfig setTopMaterial(BlockState top)
+		public MutableTernarySurfaceConfig setTopMaterial(BlockState top)
 		{
 			this.top = top;
 			return this;
 		}
-		public FlexibleSurfaceConfig setUnderMaterial(BlockState under)
+		public MutableTernarySurfaceConfig setUnderMaterial(BlockState under)
 		{
 			this.under = under;
 			return this;
 		}
-		public FlexibleSurfaceConfig setUnderwaterMaterial(BlockState waterfloor)
+		public MutableTernarySurfaceConfig setUnderwaterMaterial(BlockState waterfloor)
 		{
 			this.waterfloor = waterfloor;
 			return this;
 		}
 
 		@Override
-		public FlexibleSurfaceConfig clone()
+		public MutableTernarySurfaceConfig clone()
 		{
-			return new FlexibleSurfaceConfig(this.top, this.under, this.waterfloor);
+			return new MutableTernarySurfaceConfig(this.top, this.under, this.waterfloor);
 		}
 
 	}

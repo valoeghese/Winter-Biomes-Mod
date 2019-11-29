@@ -5,7 +5,10 @@ import org.apache.logging.log4j.Logger;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.util.Identifier;
 import tk.valoeghese.winterbiomemod.compat.ClimaticWorldTypeCompat;
+import tk.valoeghese.winterbiomemod.init.WinterBiomeInit;
+import tk.valoeghese.winterbiomemod.init.WinterGenInit;
 
 public class WinterBiomeMod implements ModInitializer {
 	
@@ -13,11 +16,17 @@ public class WinterBiomeMod implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
+		WinterBiomeInit.init();
+		WinterGenInit.init();
 		
 		if (FabricLoader.getInstance().isModLoaded("cwt")) {
 			logger.info("WinterBiomeMod has detected that Climatic World Type is installed! Loading compatibility...");
 			ClimaticWorldTypeCompat.compat();
 		}
+	}
+	
+	public static Identifier id(String name) {
+		return new Identifier("winterbiomemod", name);
 	}
 
 }
