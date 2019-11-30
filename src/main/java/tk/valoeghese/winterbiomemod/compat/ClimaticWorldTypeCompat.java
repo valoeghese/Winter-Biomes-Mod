@@ -16,5 +16,9 @@ public final class ClimaticWorldTypeCompat {
 		// White Oaks
 		ClimateBiomes.addBiome(Climate.BOREAL, WinterBiomeInit.WHITE_OAKS, 4);
 		ClimateBiomes.addBiome(Climate.SNOWY, WinterBiomeInit.WHITE_OAKS, 10);
+		
+		// Subalpine
+		ClimateBiomes.addBiome(Climate.COOL_TEMPERATE, WinterBiomeInit.SUBALPINE, 4);
+		ClimateBiomes.addBiome(Climate.BOREAL, WinterBiomeInit.SUBALPINE, 10);
 	}
 }

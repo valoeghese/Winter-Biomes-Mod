@@ -24,11 +24,20 @@ public final class WinterGenInit {
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS, Biomes.FROZEN_RIVER);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS_THICKET, Biomes.FROZEN_RIVER);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS_HILLS, Biomes.FROZEN_RIVER);
+		
+		// Subalpine
+		OverworldBiomes.addContinentalBiome(WinterBiomeInit.SUBALPINE, OverworldClimate.COOL, 1.0);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.SUBALPINE, WinterBiomeInit.SUBALPINE_CRAG, 1.0);
+		OverworldBiomes.addShoreBiome(WinterBiomeInit.SUBALPINE, Biomes.BEACH, 1.0);
+		OverworldBiomes.addShoreBiome(WinterBiomeInit.SUBALPINE_CRAG, Biomes.STONE_SHORE, 1.0);
+		OverworldBiomes.setRiverBiome(WinterBiomeInit.SUBALPINE_CRAG, null);
+		OverworldBiomes.setRiverBiome(WinterBiomeInit.SUBALPINE, null);
 
 		// Spawn Biomes
 		FabricBiomes.addSpawnBiome(WinterBiomeInit.ALPINE);
 		FabricBiomes.addSpawnBiome(WinterBiomeInit.WHITE_OAKS);
 		FabricBiomes.addSpawnBiome(WinterBiomeInit.WHITE_OAKS_THICKET);
 		FabricBiomes.addSpawnBiome(WinterBiomeInit.WHITE_OAKS_HILLS);
+		FabricBiomes.addSpawnBiome(WinterBiomeInit.SUBALPINE);
 	}
 }

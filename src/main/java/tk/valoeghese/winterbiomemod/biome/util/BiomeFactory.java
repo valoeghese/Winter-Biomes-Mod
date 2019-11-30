@@ -23,30 +23,32 @@ import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 public class BiomeFactory {
 	private String baseBiome = (String)null;
 	private ExtendedBiome parent;
-	
+
 	private SurfaceBuilder<TernarySurfaceConfig> surfaceBuilder = SurfaceBuilder.DEFAULT;
 
-	public ExtendedBiome.MutableTernarySurfaceConfig surfaceConfig = new ExtendedBiome.MutableTernarySurfaceConfig(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState());
-	
+	ExtendedBiome.MutableTernarySurfaceConfig surfaceConfig = new ExtendedBiome.MutableTernarySurfaceConfig(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState());
+
 	private float temperature = 0.5F;
 	private float downfall = 0.5F;
 
 	private int waterColour = 4159204;
 	private int waterFogColour = 329011;
-	
+
 	private int customSkyColour = -1;
-	
-	private boolean hasCustomColours = false;
+
+	boolean hasCustomGrassColour = false;
+	boolean hasCustomFoliageColour = false;
+
 	private int grassColour;
 	private int foliageColour;
-	
+
 	private float spawnChance = 0.1F;
-	
+
 	private final float baseHeight;
 	private final float scale;
 	private final ExtendedBiome.Precipitation precipitation;
 	private final ExtendedBiome.Category category;
-	
+
 	private BiomeFactory(float baseHeight, float scale, ExtendedBiome.Category category, ExtendedBiome.Precipitation precipitation) {
 		this.baseHeight = baseHeight;
 		this.scale = scale;
@@ -60,7 +62,7 @@ public class BiomeFactory {
 		BiomeFactory factory = create(baseHeight, scale, Biome.Precipitation.RAIN, category);
 		return factory;
 	}
-	
+
 	public static BiomeFactory create(float baseHeight, float scale, ExtendedBiome.Precipitation precipitation, ExtendedBiome.Category category) {
 		BiomeFactory factory = new BiomeFactory(baseHeight, scale, category, precipitation);
 		return factory;
@@ -84,33 +86,38 @@ public class BiomeFactory {
 		this.waterFogColour = waterFogColour;
 		return this;
 	}
-	
+
 	public BiomeFactory setDarkWaterProperties() {
 		return this.setWaterProperties(0x524ed8, 0x518abc);
 	}
 
-	public BiomeFactory setColourProperties(int grassColour, int foliageColour) {
-		this.hasCustomColours = true;
-		this.foliageColour = foliageColour;
+	public BiomeFactory setGrassColour(int grassColour) {
+		this.hasCustomGrassColour = true;
 		this.grassColour = grassColour;
 		return this;
 	}
-	
+
+	public BiomeFactory setFoliageColour(int foliageColour) {
+		this.hasCustomFoliageColour = true;
+		this.foliageColour = foliageColour;
+		return this;
+	}
+
 	public BiomeFactory setSpawnChance(float spawnChance) {
 		this.spawnChance = spawnChance;
 		return this;
 	}
-	
+
 	public BiomeFactory setBaseBiome(String baseBiome) {
 		this.baseBiome = baseBiome;
 		return this;
 	}
-	
+
 	public BiomeFactory setCustomSkyColour(int colour) {
 		this.customSkyColour = colour;
 		return this;
 	}
-	
+
 	//==================================================//
 
 	public ExtendedBiome.Settings build() {
@@ -120,41 +127,37 @@ public class BiomeFactory {
 	public int getGrassColour() {
 		return this.grassColour;
 	}
-	
+
 	public int getFoliageColour() {
 		return this.foliageColour;
 	}
-	
-	public boolean hasCustomColours() {
-		return this.hasCustomColours;
-	}
-	
+
 	public float getSpawnChance() {
 		return this.spawnChance;
 	}
-	
+
 	public boolean hasCustomSkyColour() {
 		return this.customSkyColour != -1;
 	}
-	
+
 	public int getCustomSkyColour() {
 		return this.customSkyColour;
 	}
-	
+
 	//==================================================//
-	
+
 	public void setParent(ExtendedBiome parent) {
 		this.parent = parent;
 	}
-	
+
 	public ExtendedBiome getParent() {
 		return this.parent;
 	}
-	
+
 	public BiomePopulator createPopulator() {
 		return new BiomePopulator(this.getParent());
 	}
-	
+
 	public void addDefaultGeneration() {
 		this.parent.addStructureFeature(Feature.MINESHAFT.configure(new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL)));
 		this.parent.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
@@ -163,7 +166,7 @@ public class BiomeFactory {
 		DefaultBiomeFeatures.addDungeons(this.parent);
 		DefaultBiomeFeatures.addFrozenTopLayer(this.parent);
 	}
-	
+
 	public void addDefaultMineables() {
 		DefaultBiomeFeatures.addMineables(this.parent);
 		DefaultBiomeFeatures.addDefaultOres(this.parent);
@@ -172,31 +175,31 @@ public class BiomeFactory {
 
 	public static class BiomePopulator {
 		public final ExtendedBiome parent;
-		
+
 		public BiomePopulator(ExtendedBiome parent) {
 			this.parent = parent;
 		}
-		
+
 		public int treesPerChunk = 0;
 		public float extraTreeChance = 0.1F;
 		public int extraTreeCount = 1;
-		
+
 		private List<Pair<ConfiguredFeature<?, ?>, Float>> treeFeatures = new ArrayList<>();
-		
+
 		private float weightSum = 0;
-		
+
 		public <T extends FeatureConfig> BiomePopulator addTreeFeature(Feature<T> feature, T config, float weight) {
 			weightSum += weight;
 			this.treeFeatures.add(new Pair<>(feature.configure(config), weight));
 			return this;
 		}
-		
+
 		public void buildTreeFeatures() {
 			float tpc = (float) this.treesPerChunk;
 			for (Pair<ConfiguredFeature<?, ?>, Float> feature : treeFeatures)
 			{
 				int n1 = MathHelper.floor(tpc * (feature.getRight().floatValue() / this.weightSum));
-				
+
 				this.parent.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, feature.getLeft().createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(n1, this.extraTreeChance, this.extraTreeCount))));
 			}
 		}

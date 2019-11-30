@@ -9,7 +9,7 @@ import tk.valoeghese.winterbiomemod.feature.CustomFeatureConfigs;
 public class AlpineBiome extends ExtendedBiome {
 
 	public AlpineBiome() {
-		super(BiomeFactory.create(1.4f, 0.2f, Precipitation.SNOW, Category.EXTREME_HILLS).setTemperatureDownfall(-0.01f, 0.7f));
+		super(BiomeFactory.create(1.7f, 0.2f, Precipitation.SNOW, Category.EXTREME_HILLS).setTemperatureDownfall(-0.01f, 0.7f));
 
 		this.factory.addDefaultGeneration();
 		this.factory.addDefaultMineables();
