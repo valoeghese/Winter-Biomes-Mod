@@ -1,4 +1,4 @@
-package tk.valoeghese.winterbiomemod.biome;
+package tk.valoeghese.winterbiomemod.biome.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,7 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
 // from valar lib, originally from tbo
-public class BiomeFactory
-{
+public class BiomeFactory {
 	private String baseBiome = (String)null;
 	private ExtendedBiome parent;
 	
@@ -43,10 +42,10 @@ public class BiomeFactory
 	
 	private float spawnChance = 0.1F;
 	
-	public final float baseHeight;
-	public final float scale;
-	public final ExtendedBiome.Precipitation precipitation;
-	public final ExtendedBiome.Category category;
+	private final float baseHeight;
+	private final float scale;
+	private final ExtendedBiome.Precipitation precipitation;
+	private final ExtendedBiome.Category category;
 	
 	private BiomeFactory(float baseHeight, float scale, ExtendedBiome.Category category, ExtendedBiome.Precipitation precipitation) {
 		this.baseHeight = baseHeight;

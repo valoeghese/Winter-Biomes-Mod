@@ -9,7 +9,12 @@ public final class ClimaticWorldTypeCompat {
 	}
 
 	public static void compat() {
+		// Alpine
 		ClimateBiomes.addBiome(Climate.COOL_TEMPERATE, WinterBiomeInit.ALPINE, 6);
 		ClimateBiomes.addBiome(Climate.SNOWY, WinterBiomeInit.ALPINE, 10);
+		
+		// White Oaks
+		ClimateBiomes.addBiome(Climate.BOREAL, WinterBiomeInit.WHITE_OAKS, 4);
+		ClimateBiomes.addBiome(Climate.SNOWY, WinterBiomeInit.WHITE_OAKS, 10);
 	}
 }

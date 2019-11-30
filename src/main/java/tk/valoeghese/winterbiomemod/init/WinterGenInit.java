@@ -3,11 +3,12 @@ package tk.valoeghese.winterbiomemod.init;
 import net.fabricmc.fabric.api.biomes.v1.FabricBiomes;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biomes.v1.OverworldClimate;
+import net.minecraft.world.biome.Biomes;
 
 public final class WinterGenInit {
 	private WinterGenInit() {
 	}
-	
+
 	public static void init() {
 		// Alpine
 		OverworldBiomes.addContinentalBiome(WinterBiomeInit.ALPINE, OverworldClimate.COOL, 0.5);
@@ -15,8 +16,19 @@ public final class WinterGenInit {
 		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_PEAKS, 1);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.ALPINE_PEAKS, null);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.ALPINE, null);
-		
+
+		// White Oaks
+		OverworldBiomes.addContinentalBiome(WinterBiomeInit.WHITE_OAKS, OverworldClimate.SNOWY, 2.0);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.WHITE_OAKS, WinterBiomeInit.WHITE_OAKS_HILLS, 2);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.WHITE_OAKS, WinterBiomeInit.WHITE_OAKS_THICKET, 1);
+		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS, Biomes.FROZEN_RIVER);
+		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS_THICKET, Biomes.FROZEN_RIVER);
+		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS_HILLS, Biomes.FROZEN_RIVER);
+
 		// Spawn Biomes
 		FabricBiomes.addSpawnBiome(WinterBiomeInit.ALPINE);
+		FabricBiomes.addSpawnBiome(WinterBiomeInit.WHITE_OAKS);
+		FabricBiomes.addSpawnBiome(WinterBiomeInit.WHITE_OAKS_THICKET);
+		FabricBiomes.addSpawnBiome(WinterBiomeInit.WHITE_OAKS_HILLS);
 	}
 }

@@ -1,6 +1,8 @@
 package tk.valoeghese.winterbiomemod.biome;
 
 import net.minecraft.block.Blocks;
+import tk.valoeghese.winterbiomemod.biome.util.BiomeFactory;
+import tk.valoeghese.winterbiomemod.biome.util.ExtendedBiome;
 
 public class AlpineGlacierBiome extends ExtendedBiome {
 

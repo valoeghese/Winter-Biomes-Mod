@@ -1,4 +1,4 @@
-package tk.valoeghese.winterbiomemod.biome;
+package tk.valoeghese.winterbiomemod.biome.util;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,7 +9,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
-import tk.valoeghese.winterbiomemod.biome.BiomeFactory.BiomePopulator;
+import tk.valoeghese.winterbiomemod.biome.util.BiomeFactory.BiomePopulator;
 
 //from valar lib, originally from tbo
 public abstract class ExtendedBiome extends net.minecraft.world.biome.Biome
