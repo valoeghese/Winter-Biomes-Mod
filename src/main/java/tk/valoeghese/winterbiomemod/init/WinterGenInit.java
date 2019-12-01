@@ -13,7 +13,8 @@ public final class WinterGenInit {
 		// Alpine
 		OverworldBiomes.addContinentalBiome(WinterBiomeInit.ALPINE, OverworldClimate.COOL, 0.5);
 		OverworldBiomes.addContinentalBiome(WinterBiomeInit.ALPINE, OverworldClimate.SNOWY, 2.0);
-		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_PEAKS, 1);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_PEAKS, 3);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_GLACIAL_PEAKS, 1);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.ALPINE_PEAKS, null);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.ALPINE, null);
 

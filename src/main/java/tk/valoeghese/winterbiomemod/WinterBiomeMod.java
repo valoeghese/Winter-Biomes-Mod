@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 import tk.valoeghese.winterbiomemod.compat.ClimaticWorldTypeCompat;
 import tk.valoeghese.winterbiomemod.init.WinterBiomeInit;
 import tk.valoeghese.winterbiomemod.init.WinterGenInit;
+import tk.valoeghese.winterbiomemod.init.WinterSurfaceInit;
 
 public class WinterBiomeMod implements ModInitializer {
 	
@@ -16,6 +17,7 @@ public class WinterBiomeMod implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
+		WinterSurfaceInit.init();
 		WinterBiomeInit.init();
 		WinterGenInit.init();
 		

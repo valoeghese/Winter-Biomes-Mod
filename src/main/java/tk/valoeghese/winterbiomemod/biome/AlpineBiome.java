@@ -5,11 +5,12 @@ import net.minecraft.world.gen.feature.Feature;
 import tk.valoeghese.winterbiomemod.biome.util.BiomeFactory;
 import tk.valoeghese.winterbiomemod.biome.util.ExtendedBiome;
 import tk.valoeghese.winterbiomemod.feature.CustomFeatureConfigs;
+import tk.valoeghese.winterbiomemod.init.WinterSurfaceInit;
 
 public class AlpineBiome extends ExtendedBiome {
 
 	public AlpineBiome() {
-		super(BiomeFactory.create(1.7f, 0.2f, Precipitation.SNOW, Category.EXTREME_HILLS).setTemperatureDownfall(-0.01f, 0.7f));
+		super(BiomeFactory.create(1.75f, 0.2f, Precipitation.SNOW, Category.EXTREME_HILLS).setSurfaceBuilder(WinterSurfaceInit.GLACIER).setTemperatureDownfall(-0.01f, 0.7f));
 
 		this.factory.addDefaultGeneration();
 		this.factory.addDefaultMineables();
