@@ -28,7 +28,7 @@ public final class WinterBiomeInit {
 		// 1.0.0
 		Registry.register(Registry.BIOME, WinterBiomeMod.id("alpine"), ALPINE);
 		Registry.register(Registry.BIOME, WinterBiomeMod.id("alpine_peaks"), ALPINE_PEAKS);
-		Registry.register(Registry.BIOME, WinterBiomeMod.id("alpine_glacial_peaks"), ALPINE_GLACIAL_PEAKS);
+		Registry.register(Registry.BIOME, WinterBiomeMod.id("glacial_peaks"), ALPINE_GLACIAL_PEAKS);
 
 		Registry.register(Registry.BIOME, WinterBiomeMod.id("white_oaks"), WHITE_OAKS);
 		Registry.register(Registry.BIOME, WinterBiomeMod.id("white_oaks_thicket"), WHITE_OAKS_THICKET);
