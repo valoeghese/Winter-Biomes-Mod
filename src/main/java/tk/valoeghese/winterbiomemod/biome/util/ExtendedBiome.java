@@ -3,6 +3,8 @@ package tk.valoeghese.winterbiomemod.biome.util;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityCategory;
+import net.minecraft.entity.EntityType;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.DecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -15,17 +17,41 @@ import tk.valoeghese.winterbiomemod.biome.util.BiomeFactory.BiomePopulator;
 public abstract class ExtendedBiome extends net.minecraft.world.biome.Biome {
 	public final BiomeFactory factory;
 	public final BiomePopulator populator;
-	
+
 	protected ExtendedBiome(BiomeFactory biomeFactory) {
 		super(biomeFactory.build());
-		
+
 		biomeFactory.setParent(this);
 		factory = biomeFactory;
 		populator = biomeFactory.createPopulator();
 	}
-	
+
 	public static <T extends FeatureConfig, U extends DecoratorConfig> ConfiguredFeature<?, ?> configure(Feature<T> feature, T featureConfig, Decorator<U> decorator, U decoratorConfig) {
 		return feature.configure(featureConfig).createDecoratedFeature(decorator.configure(decoratorConfig));
+	}
+
+	protected void addSpawn(EntityCategory category, int weight, EntityType<?> entityType, int minGroupSize, int maxGroupSize) {
+		this.addSpawn(category, new SpawnEntry(entityType, weight, minGroupSize, maxGroupSize));
+	}
+
+	protected void addDefaultMonsters(boolean iceSkeletons) {
+		// not a monster, but still in every biome
+		this.addSpawn(EntityCategory.AMBIENT, 10, EntityType.BAT, 8, 8);
+		
+		this.addSpawn(EntityCategory.MONSTER, 95, EntityType.ZOMBIE, 4, 4);
+		this.addSpawn(EntityCategory.MONSTER, 5, EntityType.ZOMBIE_VILLAGER, 1, 1);
+
+		if (iceSkeletons) {
+			this.addSpawn(EntityCategory.MONSTER, 20, EntityType.SKELETON, 4, 4);
+			this.addSpawn(EntityCategory.MONSTER, 80, EntityType.STRAY, 4, 4);
+		} else {
+			this.addSpawn(EntityCategory.MONSTER, 100, EntityType.SKELETON, 4, 4);
+		}
+
+		this.addSpawn(EntityCategory.MONSTER, 100, EntityType.CREEPER, 4, 4);
+		this.addSpawn(EntityCategory.MONSTER, 100, EntityType.SLIME, 4, 4);
+		this.addSpawn(EntityCategory.MONSTER, 10, EntityType.ENDERMAN, 1, 4);
+		this.addSpawn(EntityCategory.MONSTER, 5, EntityType.WITCH, 1, 1);
 	}
 
 	@Override
@@ -44,7 +70,7 @@ public abstract class ExtendedBiome extends net.minecraft.world.biome.Biome {
 	public float getMaxSpawnLimit() {
 		return this.factory.getSpawnChance();
 	}
-	
+
 	public void setTopBlock(BlockState top) {
 		this.factory.surfaceConfig.setTopMaterial(top);
 	}
@@ -54,7 +80,7 @@ public abstract class ExtendedBiome extends net.minecraft.world.biome.Biome {
 	public void setUnderwaterBlock(BlockState underwater) {
 		this.factory.surfaceConfig.setUnderwaterMaterial(underwater);
 	}
-	
+
 	//============================================================================//
 
 	public static class MutableTernarySurfaceConfig extends TernarySurfaceConfig implements Cloneable {

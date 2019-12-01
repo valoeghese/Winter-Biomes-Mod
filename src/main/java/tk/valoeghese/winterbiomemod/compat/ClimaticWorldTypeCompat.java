@@ -20,5 +20,8 @@ public final class ClimaticWorldTypeCompat {
 		// Subalpine
 		ClimateBiomes.addBiome(Climate.COOL_TEMPERATE, WinterBiomeInit.SUBALPINE, 4);
 		ClimateBiomes.addBiome(Climate.BOREAL, WinterBiomeInit.SUBALPINE, 10);
+		
+		// Ice Cap
+		ClimateBiomes.addBiome(Climate.ICE_CAP, WinterBiomeInit.ICE_CAP, 10);
 	}
 }

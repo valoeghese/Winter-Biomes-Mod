@@ -13,15 +13,16 @@ public final class WinterGenInit {
 		// Alpine
 		OverworldBiomes.addContinentalBiome(WinterBiomeInit.ALPINE, OverworldClimate.COOL, 0.5);
 		OverworldBiomes.addContinentalBiome(WinterBiomeInit.ALPINE, OverworldClimate.SNOWY, 2.0);
-		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_PEAKS, 3);
-		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_GLACIAL_PEAKS, 1);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_PEAKS, 3.0);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.ALPINE, WinterBiomeInit.ALPINE_GLACIAL_PEAKS, 1.0);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.ALPINE_PEAKS, null);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.ALPINE, null);
+		OverworldBiomes.setRiverBiome(WinterBiomeInit.ALPINE_GLACIAL_PEAKS, null);
 
 		// White Oaks
 		OverworldBiomes.addContinentalBiome(WinterBiomeInit.WHITE_OAKS, OverworldClimate.SNOWY, 2.0);
-		OverworldBiomes.addHillsBiome(WinterBiomeInit.WHITE_OAKS, WinterBiomeInit.WHITE_OAKS_HILLS, 2);
-		OverworldBiomes.addHillsBiome(WinterBiomeInit.WHITE_OAKS, WinterBiomeInit.WHITE_OAKS_THICKET, 1);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.WHITE_OAKS, WinterBiomeInit.WHITE_OAKS_HILLS, 2.0);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.WHITE_OAKS, WinterBiomeInit.WHITE_OAKS_THICKET, 1.0);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS, Biomes.FROZEN_RIVER);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS_THICKET, Biomes.FROZEN_RIVER);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.WHITE_OAKS_HILLS, Biomes.FROZEN_RIVER);
@@ -33,6 +34,13 @@ public final class WinterGenInit {
 		OverworldBiomes.addShoreBiome(WinterBiomeInit.SUBALPINE_CRAG, Biomes.STONE_SHORE, 1.0);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.SUBALPINE_CRAG, null);
 		OverworldBiomes.setRiverBiome(WinterBiomeInit.SUBALPINE, null);
+		
+		// Ice Cap
+		OverworldBiomes.addContinentalBiome(WinterBiomeInit.ICE_CAP, OverworldClimate.SNOWY, 1.5);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.ICE_CAP, Biomes.ICE_SPIKES, 1.0);
+		OverworldBiomes.addHillsBiome(WinterBiomeInit.ICE_CAP, WinterBiomeInit.ICE_CAP, 4.0);
+		OverworldBiomes.addShoreBiome(WinterBiomeInit.ICE_CAP, WinterBiomeInit.ICE_CAP, 1.0);
+		OverworldBiomes.setRiverBiome(WinterBiomeInit.ICE_CAP, null);
 
 		// Spawn Biomes
 		FabricBiomes.addSpawnBiome(WinterBiomeInit.ALPINE);
