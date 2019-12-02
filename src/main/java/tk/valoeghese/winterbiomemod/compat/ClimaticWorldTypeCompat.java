@@ -23,5 +23,8 @@ public final class ClimaticWorldTypeCompat {
 		
 		// Ice Cap
 		ClimateBiomes.addBiome(Climate.ICE_CAP, WinterBiomeInit.ICE_CAP, 10);
+		
+		// Tundra
+		ClimateBiomes.addBiome(Climate.BOREAL, WinterBiomeInit.TUNDRA, 8);
 	}
 }

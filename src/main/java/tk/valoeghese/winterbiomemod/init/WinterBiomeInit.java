@@ -8,6 +8,7 @@ import tk.valoeghese.winterbiomemod.biome.AlpineGlacialPeaksBiome;
 import tk.valoeghese.winterbiomemod.biome.AlpinePeaksBiome;
 import tk.valoeghese.winterbiomemod.biome.IceCapBiome;
 import tk.valoeghese.winterbiomemod.biome.SubalpineBiome;
+import tk.valoeghese.winterbiomemod.biome.TundraBiome;
 import tk.valoeghese.winterbiomemod.biome.WhiteOaksBiome;
 
 public final class WinterBiomeInit {
@@ -26,6 +27,8 @@ public final class WinterBiomeInit {
 	public static final Biome SUBALPINE_CRAG = new SubalpineBiome(3);
 	
 	public static final Biome ICE_CAP = new IceCapBiome();
+	
+	public static final Biome TUNDRA = new TundraBiome();
 
 	public static void init() {
 		// 1.0.0
@@ -41,5 +44,7 @@ public final class WinterBiomeInit {
 		Registry.register(Registry.BIOME, WinterBiomeMod.id("subalpine_crag"), SUBALPINE_CRAG);
 		
 		Registry.register(Registry.BIOME, WinterBiomeMod.id("ice_cap"), ICE_CAP);
+		
+		Registry.register(Registry.BIOME, WinterBiomeMod.id("tundra"), TUNDRA);
 	}
 }

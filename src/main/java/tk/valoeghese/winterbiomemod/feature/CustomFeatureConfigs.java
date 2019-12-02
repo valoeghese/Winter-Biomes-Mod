@@ -15,6 +15,7 @@ import tk.valoeghese.winterbiomemod.Required;
 public class CustomFeatureConfigs {
 	public static final MegaTreeFeatureConfig ALPINE = megaTree(Blocks.SPRUCE_LOG.getDefaultState(), Blocks.SPRUCE_LEAVES.getDefaultState()).height(17, 14).crownHeight(15).build();
 	public static final BoulderFeatureConfig STONE_BOULDER = new BoulderFeatureConfig(Blocks.STONE.getDefaultState(), 1);
+	public static final BoulderFeatureConfig COBBLESTONE_BOULDER = new BoulderFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 1);
 	public static final TreeFeatureConfig OAK_BUSH = new TreeFeatureConfig.Builder(provider(Blocks.OAK_LOG), provider(Blocks.OAK_LEAVES)).baseHeight(4).build();
 	public static final TreeFeatureConfig SPRUCE_BUSH = new TreeFeatureConfig.Builder(provider(Blocks.SPRUCE_LOG), provider(Blocks.SPRUCE_LEAVES)).baseHeight(4).build();
 
